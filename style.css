@@ -290,6 +290,131 @@ p {
     background: var(--sand);
 }
 
+/* ------------------------------------------------------------- timeline */
+
+/*
+    The roadmap is drawn as a day, because the product is.
+
+    The first version was a hairline rule with round dots, solid above and
+    dashed below. It said the right thing and it said it in a language the app
+    does not speak: nowhere in Driftglow is there a dashed border.
+
+    So the rule became a gradient, and the dots became hours of it. Each
+    shipped item takes its color from where it sits - deep blue, sky, cream,
+    sand, rose - which is a day from before dawn to after sunset, and is
+    exactly how a scene is written: a handful of key colors at a handful of key
+    hours. Five things that exist, five hours of light.
+
+    Then the light runs out. What is not built yet gets no color and no glow,
+    only a faint ring on a rule that has faded to almost nothing - the part of
+    the day that has not happened. Nobody has to be told which half is which.
+*/
+.eyebrow {
+    margin: 3.5rem 0 1.75rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.timeline {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: var(--measure);
+}
+
+/*
+    One rule for the whole list, not a segment per item.
+
+    A gradient only reads as a gradient if it runs across the whole thing;
+    cut into five pieces, each piece is a flat color and the day is gone.
+*/
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.28125rem;
+    top: 1rem;
+    bottom: 1.75rem;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        var(--slate) 0%,
+        var(--sky-blue) 22%,
+        var(--cream) 46%,
+        var(--sand) 66%,
+        var(--amber) 82%,
+        var(--rose) 96%,
+        transparent 100%
+    );
+}
+
+.timeline li {
+    position: relative;
+    padding: 0 0 2.25rem 2.25rem;
+}
+
+/*
+    The dot is a light, not a bullet.
+
+    A flat disc on a dark ground reads as punctuation. The halo is what makes
+    it read as something lit, and it is the same trick the scenes use: a small
+    core and a wide, very faint surround.
+*/
+.timeline li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 0.4375rem;
+    height: 0.4375rem;
+    border-radius: 50%;
+    background: var(--sand);
+    box-shadow: 0 0 0.75rem 0.0625rem currentColor;
+    color: var(--sand);
+}
+
+.timeline li:nth-child(1)::after { background: var(--sky-blue); color: rgba(121, 180, 228, 0.55); }
+.timeline li:nth-child(2)::after { background: var(--cream);    color: rgba(250, 234, 196, 0.5); }
+.timeline li:nth-child(3)::after { background: var(--sand);     color: rgba(233, 210, 168, 0.5); }
+.timeline li:nth-child(4)::after { background: var(--amber);    color: rgba(240, 179, 137, 0.55); }
+.timeline li:nth-child(5)::after { background: var(--rose);     color: rgba(142, 70, 104, 0.75); }
+
+/* ------------------------------------------- the part of the day to come */
+
+.timeline.ahead::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(155, 175, 194, 0.22) 0%,
+        rgba(155, 175, 194, 0.10) 55%,
+        transparent 100%
+    );
+}
+
+.timeline.ahead li::after {
+    background: transparent;
+    border: 1px solid var(--muted);
+    box-shadow: none;
+    /* Il cerchio ha un bordo, quindi la scatola cresce: si toglie da dove sta. */
+    left: -0.03125rem;
+    top: 0.46875rem;
+}
+
+.timeline h3 {
+    font-size: 1.0625rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.35;
+    margin: 0 0 0.375rem;
+}
+
+.timeline p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9375rem;
+}
+
 /* ---------------------------------------------------------------- footer */
 
 footer {
