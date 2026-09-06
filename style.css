@@ -1,0 +1,388 @@
+/*
+    The colors are not chosen here: they are taken.
+
+    Every value below is one of the color stops of Meridian, the app's first
+    scene, copied from its source. Same rule as the icon and the store cards:
+    the site's color and the product's color are the same number.
+*/
+:root {
+    --night: #050a19;
+    --deep: #0a1230;
+    --slate: #17214c;
+    --dusk: #251f4c;
+    --rose: #8e4668;
+    --amber: #f0b389;
+    --sky-blue: #79b4e4;
+    --cream: #faeac4;
+    --sand: #e9d2a8;
+
+    --ground: #070b16;
+    --text: #ece8e0;
+    --muted: #8f9db4;
+    --on-sky: rgba(255, 255, 255, 0.76);
+    --rule: rgba(155, 175, 194, 0.16);
+
+    --measure: 34rem;
+    --page: 46rem;
+    --wide: 58rem;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--text);
+    font-family: Manrope, "Segoe UI", system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+.page {
+    max-width: var(--page);
+    margin: 0 auto;
+    padding: 0 1.75rem;
+}
+
+/* ------------------------------------------------------------------ sky */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    padding-bottom: 4rem;
+}
+
+/*
+    The sky at the current hour.
+
+    day.js paints the real gradient from day.json; this is the fallback for
+    when scripts do not run - a still day rather than a black rectangle.
+*/
+.sky {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(
+        to bottom,
+        #3477c1 0%,
+        var(--sky-blue) 30%,
+        var(--cream) 62%,
+        var(--sand) 72%,
+        #8a93ad 100%
+    );
+}
+
+/*
+    The veil, the same idea the app calls Ink.
+
+    Without it, at noon a white heading would land on the cream horizon band
+    and disappear. It is not uniform: heavier at the top where the text is,
+    nearly opaque at the bottom where the sky dissolves into the page.
+*/
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        to bottom,
+        rgba(7, 11, 22, 0.52) 0%,
+        rgba(7, 11, 22, 0.38) 34%,
+        rgba(7, 11, 22, 0.62) 64%,
+        rgba(7, 11, 22, 0.94) 88%,
+        rgb(7, 11, 22) 100%
+    );
+}
+
+/* --------------------------------------------------------------- header */
+
+.masthead {
+    padding: 5.5rem 0 0;
+}
+
+.wordmark {
+    font-size: clamp(3rem, 11vw, 5.25rem);
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin: 0;
+}
+
+.wordmark .glow {
+    color: var(--sand);
+}
+
+.tagline {
+    font-size: clamp(1.25rem, 3.4vw, 1.75rem);
+    font-weight: 200;
+    line-height: 1.3;
+    margin: 1.75rem 0 0;
+}
+
+.standfirst {
+    color: var(--on-sky);
+    max-width: var(--measure);
+    margin: 1.25rem 0 0;
+}
+
+/* ------------------------------------------------------------ the strip */
+
+.day {
+    margin: 3.5rem 0 0;
+}
+
+/*
+    Twenty-four columns, one per hour, each holding that hour's vertical
+    gradient: the same thing the app shows under its title.
+
+    The background declared here is the no-JavaScript fallback, covered by the
+    columns as soon as they arrive.
+*/
+.ribbon {
+    position: relative;
+    display: flex;
+    height: 5.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: linear-gradient(
+        to right,
+        #17214c 0%,
+        #5b4276 21%,
+        #f0b389 33%,
+        #faeac4 54%,
+        #f0b47e 75%,
+        #8e4668 88%,
+        #17214c 100%
+    );
+}
+
+.ribbon.live {
+    cursor: ew-resize;
+    touch-action: none;
+}
+
+.ribbon .col {
+    flex: 1 1 0;
+}
+
+.ribbon .mark {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    margin-left: -1px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.55);
+    transition: left 0.18s ease-out;
+}
+
+.ribbon:focus-visible {
+    outline: 2px solid var(--sand);
+    outline-offset: 3px;
+}
+
+.day-labels {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.625rem 0 0;
+    color: var(--on-sky);
+    font-size: 0.875rem;
+}
+
+.day-hint {
+    margin: 1.5rem 0 0;
+    color: var(--on-sky);
+    font-size: 0.9375rem;
+}
+
+/* -------------------------------------------------------------- sections */
+
+section {
+    padding: 4.5rem 0 0;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2.125rem);
+    font-weight: 200;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+}
+
+p {
+    max-width: var(--measure);
+}
+
+/*
+    Card and text side by side, and the card changes side.
+
+    The cards step outside the text column because inside it their headline
+    would be unreadable, and a card you cannot read may as well be a
+    screenshot. Alternating the side gives the page a rhythm.
+
+    They are the very same images that go on the Play Store, drawn by the app
+    from its own components.
+*/
+.feature {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(var(--wide), calc(100vw - 3.5rem));
+    display: grid;
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+    padding-top: 5.5rem;
+}
+
+/*
+    Flipping is not only reordering.
+
+    The columns are narrow-wide; sending the card last with `order` put it in
+    the wide one and it came out twice the size of the others. The measures
+    have to swap with it.
+*/
+.feature.flip {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+}
+
+.feature.flip .card {
+    order: 2;
+}
+
+.card {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.875rem;
+    border: 1px solid var(--rule);
+}
+
+.plain {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: var(--measure);
+}
+
+.plain li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+}
+
+.plain li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1.4em;
+    width: 0.5rem;
+    height: 1px;
+    background: var(--sand);
+}
+
+/* ---------------------------------------------------------------- footer */
+
+footer {
+    margin: 6rem 0 0;
+    padding: 2rem 0 4rem;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.9375rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+}
+
+a {
+    color: var(--sand);
+    text-decoration-color: rgba(233, 210, 168, 0.4);
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    text-decoration-color: var(--sand);
+}
+
+a:focus-visible {
+    outline: 2px solid var(--sand);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* --------------------------------------------------------- privacy page */
+
+.doc {
+    max-width: var(--measure);
+    padding-top: 4rem;
+}
+
+.doc h1 {
+    font-size: clamp(2rem, 6vw, 2.75rem);
+    font-weight: 200;
+    letter-spacing: -0.015em;
+    margin: 0;
+}
+
+.doc .updated {
+    color: var(--muted);
+    font-size: 0.9375rem;
+    margin: 0.5rem 0 0;
+}
+
+.doc h2 {
+    margin-top: 3rem;
+    font-size: 1.375rem;
+}
+
+.doc strong {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.doc code {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: 0.9em;
+    color: var(--sky-blue);
+}
+
+.short {
+    font-size: 1.375rem;
+    font-weight: 200;
+    line-height: 1.45;
+    border-left: 2px solid var(--sand);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0 0;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 3rem;
+}
+
+@media (max-width: 46rem) {
+    .feature {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+        max-width: 26rem;
+    }
+
+    .feature.flip .card {
+        order: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ribbon .mark {
+        transition: none;
+    }
+}
