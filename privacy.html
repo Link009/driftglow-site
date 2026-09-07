@@ -71,8 +71,24 @@
 </p>
 
 <p>
-    <strong>Permissions.</strong> Driftglow requests one permission:
-    <code>SET_WALLPAPER</code>, which lets it do the only thing it does.
+    <strong>Permissions.</strong> Driftglow declares one permission of its
+    own: <code>SET_WALLPAPER</code>, which lets it do the only thing it does.
+    Three more arrive from the library that wakes it on the hour —
+    <code>RECEIVE_BOOT_COMPLETED</code> so it keeps working after you restart
+    the phone, plus <code>WAKE_LOCK</code> and <code>FOREGROUND_SERVICE</code>.
+</p>
+
+<p>
+    A fifth appears in the list with a long name of its own:
+    <code>io.github.link009.driftglow.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code>.
+    It looks alarming and is the opposite — a lock rather than a key. Android
+    generates it so that <em>only Driftglow</em> can talk to Driftglow's own
+    internal parts, and no other app on your phone can.
+</p>
+
+<p>
+    None of them can reach the network, and none of them asks you anything:
+    Android grants them when the app is installed.
 </p>
 
 <p>
