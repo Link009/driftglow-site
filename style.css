@@ -415,6 +415,79 @@ p {
     font-size: 0.9375rem;
 }
 
+/* ---------------------------------------------------------------- invite */
+
+/*
+    L'invito al test chiuso. TEMPORANEO: si toglie insieme alla sezione.
+
+    E' l'unico riquadro di tutta la pagina, e lo e' per una ragione e non per
+    decorazione: tutto il resto qui descrive, questo chiede. Un bordo dice
+    "questa e' un'altra cosa" senza bisogno di scriverlo.
+
+    Il colore d'accento e' l'ambra, la stessa del quarto punto della linea del
+    tempo - il pomeriggio. Non un rosso o un verde da avviso: la pagina non ha
+    nessun altro colore che urla, e uno solo per un invito temporaneo sarebbe
+    la cosa piu' vistosa del sito per la meno duratura.
+*/
+.invite {
+    max-width: var(--measure);
+    margin-top: 2rem;
+    padding: 2rem 2rem 1.75rem;
+    border: 1px solid rgba(240, 179, 137, 0.28);
+    border-radius: 0.75rem;
+    background: rgba(240, 179, 137, 0.045);
+}
+
+.invite h2 {
+    font-size: clamp(1.25rem, 3vw, 1.625rem);
+    margin-bottom: 1rem;
+}
+
+.invite a {
+    color: var(--amber);
+}
+
+/*
+    Qui la numerazione dice qualcosa: e' una sequenza vera, e il secondo passo
+    e' quello che tutti saltano - iscriversi al gruppo non fa niente finche'
+    non si apre anche il collegamento di adesione. Numerarli e' l'unico modo di
+    dire "in quest'ordine, e nessuno e' facoltativo".
+*/
+.steps {
+    counter-reset: step;
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+}
+
+.steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 0 0 1.25rem 2.25rem;
+}
+
+.steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0.05rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 1px solid rgba(240, 179, 137, 0.4);
+    color: var(--amber);
+    font-size: 0.8125rem;
+    line-height: 1.45rem;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.invite .fine {
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+    font-size: 0.9375rem;
+}
+
 /* ---------------------------------------------------------------- footer */
 
 footer {
