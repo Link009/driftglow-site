@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using Driftglow — five screens, and then you forget it</title>
+<meta name="description" content="What Driftglow looks like: today's scene, the collections, watching a scene before you keep it, grain and blur, and a scene built from your own photograph.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--
+    Le schermate sono dell'app vera, non disegni: build di release, emulatore
+    Android 16, barra di sistema in vetrina - orologio fermo, niente notifiche,
+    nessuna icona che dica "emulatore". Si rifanno con
+    `DRIFTGLOW_VETRINA=1 bash tools/schermate.sh 36`.
+
+    L'ora e' sempre le 19:20, in tutte, perche' una vetrina in cui l'orologio
+    salta di schermata in schermata si legge come un fotomontaggio.
+-->
+
+<div class="page">
+
+<header class="masthead">
+    <h1 class="wordmark">Drift<span class="glow">glow</span></h1>
+    <p class="tagline">Five screens,<br>and then you forget it.</p>
+    <p class="standfirst">
+        What the app actually looks like. You meet the first screen once, the
+        others only when you feel like changing something.
+    </p>
+</header>
+
+<section class="feature">
+    <img class="card" src="img/app/home.png" width="540" height="1200"
+         alt="The Driftglow home screen at 19:20: the Meridian scene behind, the day strip from midnight to midnight with a marker near evening, four scene thumbnails, and rows for effects, changes and where the wallpaper is applied.">
+    <div>
+        <h2>One screen, and today's light</h2>
+        <p>
+            The scene you are wearing is the background — not a thumbnail of
+            it, the thing itself, at this hour. Under it, the whole day from
+            midnight to midnight: drag it and you see where the light is
+            going, at four in the morning or at noon.
+        </p>
+        <p>
+            Everything else is one tap away and stays out of the way: how
+            often it moves, where it is applied, the grain.
+        </p>
+    </div>
+</section>
+
+<section class="feature flip">
+    <img class="card" src="img/app/collection.png" width="540" height="1200"
+         alt="The Tropics collection: nine scenes side by side — a lagoon with a crescent moon, palm fronds against a violet sky, glowing plankton on dark water, a hibiscus, a monstera leaf.">
+    <div>
+        <h2>Ten sets, and new ones keep arriving</h2>
+        <p>
+            A scene is not a palette. Each one carries a geometry of its own —
+            a sun crossing an arc, a tide that moves the shore twice a day,
+            stars that turn four minutes early because that is how long a
+            sidereal day is.
+        </p>
+        <p>
+            They come in sets: the originals, the tropics, a japanese garden,
+            a synthwave night, a city, low light. Turn a set on and the
+            wallpaper picks a different scene from it each day, on its own.
+            How many there are is not a number worth printing: it goes up.
+        </p>
+    </div>
+</section>
+
+<section class="feature">
+    <img class="card" src="img/app/scene.png" width="540" height="1200"
+         alt="The Lagoon scene open at 03:13, marked preview only: a crescent moon over a dark lagoon, the day strip below, and two buttons — Watch the day, and Set as wallpaper.">
+    <div>
+        <h2>Watch it before you keep it</h2>
+        <p>
+            A wallpaper is a thing you see at seven in the morning and at
+            eleven at night, so judging it at the hour you happen to be
+            standing in tells you almost nothing.
+        </p>
+        <p>
+            Open a scene and it runs the whole day in a few seconds — here it
+            is stopped at ten past three, while the phone says twenty past
+            seven. Then, if you want it, one button.
+        </p>
+    </div>
+</section>
+
+<section class="feature flip">
+    <img class="card" src="img/app/effects.png" width="540" height="1200"
+         alt="The effects sheet: three grain previews side by side, from a perfectly smooth surface to a visible texture, and below them three blur previews.">
+    <div>
+        <h2>Grain, if you want it</h2>
+        <p>
+            A gradient on eight bits per channel can show its steps as bands.
+            A little grain breaks them up, and on some scenes it is there
+            whether you ask for it or not, because without it the sky would be
+            striped.
+        </p>
+        <p>
+            Three steps that really look different, and you can see all three
+            before choosing. Same for blur.
+        </p>
+    </div>
+</section>
+
+<section class="feature">
+    <img class="card" src="img/app/create.png" width="540" height="1200"
+         alt="The scene editor: a name, a button to choose a photograph, the day strip, six key hours from midnight to nine at night, and a slider that shifts all the colours together.">
+    <div>
+        <h2>Or build one from a photograph</h2>
+        <p>
+            Pick a picture and the app reads the light out of it, top to
+            bottom: what is at the top of the frame becomes the top of the
+            sky. It works best on something with a top and a bottom — a
+            horizon, a wall, a window.
+        </p>
+        <p>
+            The photograph is not copied anywhere. What gets saved is a list
+            of colours, and those colours then live a day of their own.
+        </p>
+    </div>
+</section>
+
+<!-- Senza immagine, quindi senza `.feature`: quella e' una griglia a due
+     colonne, e una colonna vuota schiaccerebbe il testo in venti rem. -->
+<section>
+    <div>
+        <h2>And then nothing</h2>
+        <p>
+            That is the point of the whole thing. It changes on its own, every
+            hour or at whatever pace you set, and there is no reason to open
+            it again. Off is a real off: one switch, and it stops touching
+            your wallpaper.
+        </p>
+        <p class="fine">
+            <a href="index.html">What it does, and what it does not</a> ·
+            <a href="privacy.html">Privacy policy</a>
+        </p>
+    </div>
+</section>
+
+<footer>
+    <span>Driftglow, by Link009</span>
+    <a href="privacy.html">Privacy policy</a>
+</footer>
+
+</div>
+
+</body>
+</html>

@@ -205,6 +205,34 @@ body {
     font-size: 0.9375rem;
 }
 
+/*
+    L'invito a vedere l'app.
+
+    Un bordo e non una sottolineatura: dentro un paragrafo il link si legge
+    come una nota, qui deve leggersi come una porta. Tondo e sottile perche'
+    sta sopra il cielo, e un rettangolo pieno li' sarebbe un francobollo
+    appiccicato sul gradiente.
+*/
+.guarda {
+    margin: 2.25rem 0 0;
+}
+
+.guarda a {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid rgba(240, 179, 137, 0.35);
+    border-radius: 999px;
+    color: var(--amber);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.guarda a:hover {
+    border-color: var(--amber);
+    background: rgba(240, 179, 137, 0.08);
+}
+
 /* -------------------------------------------------------------- sections */
 
 section {
