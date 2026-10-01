@@ -2,9 +2,8 @@
 
 A wallpaper that follows the real sun, hour by hour.
 
-|  |  |  |  |
-|:-:|:-:|:-:|:-:|
 |![The home screen: today's scene, and the whole day from midnight to midnight.](img/app/home.png)|![The Tropics set: a lagoon, palm fronds, glowing plankton.](img/app/collection.png)|![A scene stopped at ten past three, with Watch the day and Set as wallpaper.](img/app/scene.png)|![The editor: a photograph becomes a list of colours.](img/app/create.png)|
+|:-:|:-:|:-:|:-:|
 |Today's light|Sets of scenes, and more arriving|A whole day in a few seconds|Or build one from a photograph|
 
 An Android app that builds your wallpaper from the time of day and changes it as
@@ -24,6 +23,7 @@ set a wallpaper. Off is a real off - one switch, and it stops touching it.
 
 - [What it does, and what it does not](https://link009.github.io/driftglow-site/)
 - [Using it - five screens](https://link009.github.io/driftglow-site/how.html)
+- [What changed, version by version](https://link009.github.io/driftglow-site/changes.html)
 - [Privacy notice](https://link009.github.io/driftglow-site/privacy.html)
 
 Driftglow is in closed testing on Google Play. The site says how to join.
