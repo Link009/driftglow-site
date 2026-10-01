@@ -99,6 +99,36 @@
 </section>
 
 <section class="feature">
+    <!--
+        Live si racconta con un video, non con una scheda: e' l'unica cosa
+        della pagina che una fotografia non puo' dire. Esce dal renderer
+        vero, come le schede (BancoDiProva#vivo), e senza script o con il
+        movimento ridotto resta il fotogramma fermo.
+    -->
+    <video class="card" id="live" src="img/live.mp4" poster="img/live.jpg" width="360" height="800" muted loop playsinline preload="metadata" aria-label="The Momiji scene in Live: maple leaves falling over a path of stepping stones."></video>
+    <div>
+        <h2>It comes alive when you look</h2>
+        <p>
+            Choose Live and the wallpaper stops being a picture set once an
+            hour: it draws itself, so the light follows the clock with no
+            jump at all. Android asks you to confirm it once, and after that
+            everything changes from the app.
+        </p>
+        <p>
+            When you unlock the phone or come back to the Home screen, the
+            scenes with something in them come alive for a few seconds -
+            leaves falling, smoke rising, koi swimming, a record turning -
+            then settle. The rest of the time they are still, which is why
+            the battery hardly notices.
+        </p>
+        <p>
+            Battery saver keeps them still. How long they move, or whether
+            they move at all, is yours to choose, for every scene or just one.
+        </p>
+    </div>
+</section>
+
+<section class="feature flip">
     <img class="card" src="img/from-a-photo.jpg" width="720" height="1280" alt="A scene built from a photograph of dunes: turquoise above, sand below, and a strip showing the whole day it became.">
     <div>
         <h2>A photograph becomes a day</h2>
@@ -135,7 +165,7 @@
     </div>
 </section>
 
-<section class="feature flip">
+<section class="feature">
     <img class="card" src="img/any-hour.jpg" width="720" height="1280" alt="The Borealis scene at ten in the evening, with a strip below it showing the whole day from midnight to midnight.">
     <div>
         <h2>Try it on first</h2>
@@ -151,7 +181,7 @@
     </div>
 </section>
 
-<section class="feature">
+<section class="feature flip">
     <img class="card" src="img/nothing-else.jpg" width="720" height="1280" alt="The Sidereal scene at two in the morning, a field of stars, under the words: no account, no internet, no ads.">
     <div>
     <h2>What it does not do</h2>
@@ -184,7 +214,7 @@
     </div>
 </section>
 
-<section class="feature flip">
+<section class="feature">
     <img class="card" src="img/only-color.jpg" width="720" height="1280" alt="The Iris scene at nine in the evening: a faint ring of light on deep blue, and nothing else on the screen.">
     <div>
     <h2>The color is the whole product</h2>
@@ -374,5 +404,15 @@
 </div>
 
 <script src="day.js"></script>
+<script>
+    // Il video di Live parte solo se chi guarda non ha chiesto meno movimento.
+    (function () {
+        var v = document.getElementById('live');
+        if (v && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            v.autoplay = true;
+            v.play().catch(function () {});
+        }
+    })();
+</script>
 </body>
 </html>

@@ -596,7 +596,10 @@ a:focus-visible {
 }
 
 @media (max-width: 46rem) {
-    .feature {
+    /* .flip va nominata: da sola .feature perde contro .feature.flip, e le
+       sezioni girate restavano su due colonne anche sul telefono. */
+    .feature,
+    .feature.flip {
         grid-template-columns: minmax(0, 1fr);
         gap: 2rem;
         max-width: 26rem;
